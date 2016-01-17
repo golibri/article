@@ -1,26 +1,30 @@
 [![Built with Spacemacs](https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg)](http://github.com/syl20bnr/spacemacs)
 
 # golibri/article
-Get Text Content from HTML.
+
+Get Text Content from HTML. An **Article** gets constructed through processing a
+HTML page. The relevant content is stripped from all the useless junk and markup
+and stored as `Fulltext`. Works best with blog posts or news articles, but even
+a tweet should suffice.
 
 Given an HTML string of any "content"-site, this module:
 
-- extracts the relevant paragraphs as plain text
-- determines the language of the text
-- summarizes the text into a short snippet
+- `Fulltext`: extracts the relevant paragraphs as plain text
+- `Language`: determines the language of the text (fallback: `en`)
+- `Description`: summarizes the text into a short snippet of upto 3 sentences
 
 # installation
-`go get github.com/golibri/article`
-
-# dependencies
-`github.com/PuerkitoBio/goquery`
-`github.com/endeveit/guesslanguage`
-`github.com/JesusIslam/tldr"`
-`github.com/mauidude/go-readability`
+`go get -u github.com/golibri/article`
 
 # usage
 ````go
-a := article.Parse("website-html-string")
+import "github.com/golibri/article"
+
+func main() {
+    // ...get HTML string somewhere, e.g.: with golibri/fetch
+    a := article.Parse("website-html-string")
+    // a is an Article object, see below
+}
 ````
 
 # data fields
