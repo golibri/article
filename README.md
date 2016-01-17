@@ -20,7 +20,7 @@ Given an HTML string of any "content"-site, this module:
 
 # usage
 ````go
-a := Parse("website-html-string")
+a := article.Parse("website-html-string")
 ````
 
 # data fields
